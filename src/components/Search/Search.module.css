@@ -2,6 +2,7 @@
   position: relative;
   max-width: min(65rem, 100%);
   margin: 5rem auto 3rem;
+  padding-inline: 2rem;
 }
 
 .searchContainer {
