@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  position: fixed;
+  background-color: var(--darkBlue-900);
+  /* border-bottom: 0.15rem solid var(--darkBlue-800); */
+  z-index: 10000;
+}
+
+.nav {
+  height: clamp(6rem, 8vw, 8rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.logoContainer {
+  display: inline-block;
+  max-width: 20rem;
+}
+
+.logoContainer > img {
+  max-width: 100%;
+  object-fit: cover;
+}

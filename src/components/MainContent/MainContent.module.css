@@ -1,0 +1,9 @@
+.mainContent {
+  padding-block: 10rem;
+}
+
+.mainTitle {
+  color: var(--white);
+  font-size: clamp(var(--font-xlg), 5vw, var(--font-max));
+  text-align: center;
+}

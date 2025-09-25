@@ -1,0 +1,75 @@
+.weatherInfoLayout {
+  display: grid;
+  grid-template-columns: 64% 1fr;
+  gap: var(--spacing-xxl);
+}
+
+.weatherBg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: clamp(20rem, calc(10vw + 15rem), 40rem);
+  background-image: url("../../assets/image/desktop-hero-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  border-radius: var(--radius-16);
+  padding: var(--spacing-xl);
+}
+
+.weatherInfo h3 {
+  font-size: clamp(1.6rem, 8vw, 3.2rem);
+  text-transform: capitalize;
+}
+
+.weatherInfo p {
+  font-size: 2rem;
+}
+
+.weatherIcon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weatherIcon img {
+  width: 10rem;
+  height: 10rem;
+}
+
+.weatherIcon h3 {
+  font-size: 8rem;
+  font-style: italic;
+  display: flex;
+  position: relative;
+}
+
+.weatherIcon sup {
+  padding-left: 0.5rem;
+  font-size: 5.2rem;
+  vertical-align: top;
+}
+
+.weatherStats {
+  padding-block: var(--spacing-xxl);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--spacing-xl);
+}
+
+@media screen and (max-width: 1080px) {
+  .weatherInfoLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .weatherBg {
+    flex-direction: column;
+  }
+
+  .weatherBg {
+    height: max-content;
+  }
+}

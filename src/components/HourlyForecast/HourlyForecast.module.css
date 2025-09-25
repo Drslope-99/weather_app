@@ -1,0 +1,50 @@
+.container {
+  background-color: var(--darkBlue-800);
+  padding: 2.4rem;
+  border-radius: var(--radius-10);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: var(--font-lg);
+}
+
+.forecastList {
+  list-style: none;
+}
+
+.forecastItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--darkBlue-700);
+  border: 0.15rem solid var(--darkBlue-500);
+  border-radius: var(--radius-6);
+  padding: 0.6rem var(--spacing-sm);
+  gap: var(--spacing-sm);
+}
+
+.forecastImage {
+  width: 4rem;
+  height: 4rem;
+}
+
+.forecastImage > img {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.forecastTime,
+.forecastTemp {
+  font-size: var(--font-md);
+}
+
+.forecastTime {
+  margin-right: auto;
+}

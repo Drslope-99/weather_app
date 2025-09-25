@@ -1,0 +1,51 @@
+.container {
+  margin-top: 3rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: var(--font-lg);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--spacing-xl);
+  grid-auto-rows: 15rem;
+}
+
+.layoutItem {
+  background-color: var(--darkBlue-700);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-6);
+  border: 0.15rem solid var(--darkBlue-500);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dayTitle {
+  font-size: var(--font-md);
+  text-align: center;
+}
+
+.dayWeatherIcon {
+  width: 5rem;
+  height: 5rem;
+  align-self: center;
+}
+
+.dayWeatherIcon > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dayTemp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tempUnit {
+  font-size: var(--font-sm);
+}
