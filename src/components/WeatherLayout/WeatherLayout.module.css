@@ -5,6 +5,7 @@
 }
 
 .weatherBg {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +17,7 @@
   background-position: 50% 50%;
   border-radius: var(--radius-16);
   padding: var(--spacing-xl);
+  overflow: hidden;
 }
 
 .weatherInfo h3 {

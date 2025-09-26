@@ -35,6 +35,10 @@
   text-transform: capitalize;
 }
 
+.searchBtn:active {
+  transform: scale(0.98);
+}
+
 .searchBtn,
 .searchInput {
   padding-block: var(--spacing-lg);

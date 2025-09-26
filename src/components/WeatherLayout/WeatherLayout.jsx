@@ -3,6 +3,7 @@ import styles from "./WeatherLayout.module.css";
 import WeatherStats from "../WeatherStats/WeatherStats";
 import HourlyForecast from "../HourlyForecast/HourlyForecast";
 import DailyForcast from "../DailyForcast/DailyForcast";
+import Loader from "../Loader/Loader";
 
 // imported images for the icons
 import sunnyImage from "../../assets/image/sunny.png";
@@ -12,6 +13,7 @@ export default function WeatherInfo() {
     <div className={styles.weatherInfoLayout}>
       <section>
         <div className={styles.weatherBg}>
+          {/* <Loader /> */}
           <article className={styles.weatherInfo}>
             <h3>berlin, germany</h3>
             <p>Tuesday, Aug 5, 2025</p>
