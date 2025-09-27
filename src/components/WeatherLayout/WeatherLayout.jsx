@@ -19,12 +19,16 @@ function formatDate(date) {
   }).format(d);
   return formatted;
 }
-
-function formatCounty(code) {
-  const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
-  return regionNames.of(code);
+function formatCountry(code) {
+  if (!code) return ""; // skip if no code yet
+  try {
+    const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+    return regionNames.of(code);
+  } catch (err) {
+    console.error("Invalid country code:", code);
+    return code; // fallback to showing the code itself
+  }
 }
-
 export default function WeatherInfo({ data, isLoading, region }) {
   const {
     time,
@@ -46,7 +50,7 @@ export default function WeatherInfo({ data, isLoading, region }) {
             <>
               <article className={styles.weatherInfo}>
                 <h3>
-                  {state}, {formatCounty(country)}
+                  {state}, {formatCountry(country)}
                 </h3>
                 <p>{formatDate(time)}</p>
               </article>
