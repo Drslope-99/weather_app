@@ -79,7 +79,8 @@
   }
 
   .weatherBg {
-    height: max-content;
+    /* height: max-content; */
+    height: 25rem;
   }
 
   .weatherInfo p {

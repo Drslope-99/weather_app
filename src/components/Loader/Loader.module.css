@@ -6,7 +6,7 @@
   background-color: var(--darkBlue-700);
   border-radius: var(--radius-16);
   width: 100%;
-  height: clamp(20rem, calc(10vw + 15rem), 40rem);
+  height: 100%;
 }
 
 .loader {
