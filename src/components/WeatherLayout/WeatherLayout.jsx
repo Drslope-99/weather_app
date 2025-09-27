@@ -43,28 +43,27 @@ export default function WeatherInfo({ data, isLoading, region }) {
   return (
     <div className={styles.weatherInfoLayout}>
       <section>
-        <div className={styles.weatherBg}>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <>
-              <article className={styles.weatherInfo}>
-                <h3>
-                  {state}, {formatCountry(country)}
-                </h3>
-                <p>{formatDate(time)}</p>
-              </article>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className={styles.weatherBg}>
+            <article className={styles.weatherInfo}>
+              <h3>
+                {state}, {formatCountry(country)}
+              </h3>
+              <p>{formatDate(time)}</p>
+            </article>
 
-              <figure className={styles.weatherIcon}>
-                <img src={sunnyImage} alt="weather symbol" />
-                <h3>
-                  {Math.round(temperature_2m)}
-                  <sup>o</sup>
-                </h3>
-              </figure>
-            </>
-          )}
-        </div>
+            <figure className={styles.weatherIcon}>
+              <img src={sunnyImage} alt="weather symbol" />
+              <h3>
+                {Math.round(temperature_2m)}
+                <sup>o</sup>
+              </h3>
+            </figure>
+          </div>
+        )}
+
         {/* layout for the weather statistics */}
         <article className={styles.weatherStats}>
           <WeatherStats title="feels like" stat={temperature_2m} unit="°" />
