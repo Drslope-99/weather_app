@@ -8,30 +8,65 @@ import Loader from "../Loader/Loader";
 // imported images for the icons
 import sunnyImage from "../../assets/image/sunny.png";
 
-export default function WeatherInfo() {
+function formatDate(date) {
+  const d = new Date(date + ":00");
+
+  const formatted = new Intl.DateTimeFormat("en-US", {
+    weekday: "long", // Tuesday
+    month: "short", // Aug
+    day: "numeric", // 5
+    year: "numeric", // 2025
+  }).format(d);
+  return formatted;
+}
+
+function formatCounty(code) {
+  const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+  return regionNames.of(code);
+}
+
+export default function WeatherInfo({ data, isLoading, region }) {
+  const {
+    time,
+    temperature_2m,
+    relative_humidity_2m,
+    wind_speed_10m,
+    precipitation,
+  } = data?.current || {};
+
+  const { country, state } = region?.[0] || {};
+
   return (
     <div className={styles.weatherInfoLayout}>
       <section>
         <div className={styles.weatherBg}>
-          {/* <Loader /> */}
-          <article className={styles.weatherInfo}>
-            <h3>berlin, germany</h3>
-            <p>Tuesday, Aug 5, 2025</p>
-          </article>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <article className={styles.weatherInfo}>
+                <h3>
+                  {state}, {formatCounty(country)}
+                </h3>
+                <p>{formatDate(time)}</p>
+              </article>
 
-          <figure className={styles.weatherIcon}>
-            <img src={sunnyImage} alt="weather symbol" />
-            <h3>
-              20<sup>o</sup>
-            </h3>
-          </figure>
+              <figure className={styles.weatherIcon}>
+                <img src={sunnyImage} alt="weather symbol" />
+                <h3>
+                  {Math.round(temperature_2m)}
+                  <sup>o</sup>
+                </h3>
+              </figure>
+            </>
+          )}
         </div>
         {/* layout for the weather statistics */}
         <article className={styles.weatherStats}>
-          <WeatherStats title="feels like" />
-          <WeatherStats title="humidity" />
-          <WeatherStats title="wind" />
-          <WeatherStats title="precipitation" />
+          <WeatherStats title="feels like" stat={temperature_2m} unit="°" />
+          <WeatherStats title="humidity" stat={relative_humidity_2m} unit="%" />
+          <WeatherStats title="wind" stat={wind_speed_10m} unit="km/h" />
+          <WeatherStats title="precipitation" stat={precipitation} unit="mm" />
         </article>
         <DailyForcast />
       </section>
