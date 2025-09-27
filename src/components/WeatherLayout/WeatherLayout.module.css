@@ -16,8 +16,13 @@
   background-size: cover;
   background-position: 50% 50%;
   border-radius: var(--radius-16);
-  padding: var(--spacing-xl);
+  /* padding: var(--spacing-xl); */
   overflow: hidden;
+}
+
+.weatherInfo,
+.weatherIcon {
+  padding: var(--spacing-xl);
 }
 
 .weatherInfo h3 {
