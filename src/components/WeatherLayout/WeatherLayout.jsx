@@ -72,7 +72,7 @@ export default function WeatherInfo({ data, isLoading, region }) {
           <WeatherStats title="wind" stat={wind_speed_10m} unit="km/h" />
           <WeatherStats title="precipitation" stat={precipitation} unit="mm" />
         </article>
-        <DailyForcast />
+        <DailyForcast data={data} isLoading={isLoading} />
       </section>
       <HourlyForecast />
     </div>

@@ -1,37 +1,48 @@
 import React from "react";
 import styles from "./DailyForcast.module.css";
+import { getWeatherIcon } from "../../utils/getWeatherIcon";
 
-// imported images for the weather icons
-import sunnyImage from "../../assets/image/sunny.png";
-import cloudyImage from "../../assets/image/cloudy.png";
-import drizzleImage from "../../assets/image/drizzle.png";
-import fogImage from "../../assets/image/fog.png";
-// import overcastImage from "../../assets/image/overcast.png";
-import rainImage from "../../assets/image/rain.png";
-import snowImage from "../../assets/image/snow.png";
-import thunderstormImage from "../../assets/image/thunderstorm.png";
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export default function DailyForcast() {
+export default function DailyForcast({ data, isLoading }) {
+  const daily = data?.daily;
+
+  const transformed =
+    daily?.time?.map((t, i) => ({
+      time: t,
+      minTemp: daily.temperature_2m_min?.[i],
+      maxTemp: daily.temperature_2m_max?.[i],
+      icon: daily.weather_code?.[i],
+    })) || [];
+
+  console.log(transformed);
+
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>Daily forecast</h2>
       <div className={styles.layout}>
-        <article className={styles.layoutItem}>
-          <h3 className={styles.dayTitle}>Tue</h3>
-          <figure className={styles.dayWeatherIcon}>
-            <img src={rainImage} alt="weather icon" />
-          </figure>
-          <div className={styles.dayTemp}>
-            <span className={styles.tempUnit}>
-              21<sup>o</sup>
-            </span>
-            <span className={styles.tempUnit}>
-              15<sup>o</sup>
-            </span>
-          </div>
-        </article>
+        {transformed.map((data) => (
+          <article className={styles.layoutItem} key={data.time}>
+            <h3 className={styles.dayTitle}>
+              {days[new Date(data.time).getDay()]}
+            </h3>
+            <figure className={styles.dayWeatherIcon}>
+              <img src={getWeatherIcon(data.icon)} alt="weather icon" />
+            </figure>
+            <div className={styles.dayTemp}>
+              <span className={styles.tempUnit}>
+                {Math.round(data.maxTemp)}
+                <sup>o</sup>
+              </span>
+              <span className={styles.tempUnit}>
+                {Math.round(data.minTemp)}
+                <sup>o</sup>
+              </span>
+            </div>
+          </article>
+        ))}
 
-        <article className={styles.layoutItem}>
+        {/* <article className={styles.layoutItem}>
           <h3 className={styles.dayTitle}>Wed</h3>
           <figure className={styles.dayWeatherIcon}>
             <img src={drizzleImage} alt="weather icon" />
@@ -119,7 +130,7 @@ export default function DailyForcast() {
               15<sup>o</sup>
             </span>
           </div>
-        </article>
+        </article> */}
       </div>
     </section>
   );

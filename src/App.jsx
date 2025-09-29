@@ -13,6 +13,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const [region, setRegion] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -45,7 +46,7 @@ function App() {
         <DropdownMenu title="Units" icon={true} />
       </Header>
       <MainContent>
-        <Search />
+        <Search value={search} onSearch={(e) => setSearch(e.target.value)} />
         <WeatherLayout
           data={weatherData}
           isLoading={isLoading}

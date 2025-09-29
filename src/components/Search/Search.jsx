@@ -4,8 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import { FaMicrophone } from "react-icons/fa";
 import { FaMicrophoneSlash } from "react-icons/fa";
 
-export default function Search() {
-  const [search, setSearch] = useState("");
+export default function Search({ value, onSearch }) {
   const [microphone, setMicrophone] = useState(false);
 
   const toggleMic = () => {
@@ -21,8 +20,8 @@ export default function Search() {
             type="text"
             className={styles.searchInput}
             placeholder="Search for a place..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={value}
+            onChange={onSearch}
           />
           <button
             type="button"
@@ -37,7 +36,7 @@ export default function Search() {
           search
         </button>
       </div>
-      {search && <div className={styles.searchItems}>searchItems here</div>}
+      {value && <div className={styles.searchItems}>searchItems here</div>}
     </form>
   );
 }
