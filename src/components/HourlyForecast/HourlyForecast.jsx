@@ -3,7 +3,26 @@ import styles from "./HourlyForecast.module.css";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import weatherIcon from "../../assets/image/overcast.png";
 
-export default function HourlyForecast() {
+function formatHour(isoString) {
+  const date = new Date(isoString);
+
+  // local hour in 12-hour format with AM/PM
+  return date.toLocaleTimeString([], {
+    hour: "numeric",
+    hour12: true,
+  });
+}
+
+export default function HourlyForecast({ data, isLoading }) {
+  let hourlyData = data?.hourly?.time;
+
+  // const times = hourlyData?.map((time) => formatHour(time));
+  console.log(hourlyData);
+
+  const hour = new Date(new Date().toISOString()).getHours();
+  console.log(hour);
+  console.log(new Date().toISOString());
+
   return (
     <section className={styles.container}>
       <div className={styles.header}>
@@ -28,6 +47,14 @@ function HourForcast() {
           17<sup>o</sup>
         </span>
       </li>
+
+      {/* <SkimmishLoader /> */}
     </ul>
   );
+}
+
+function SkimmishLoader() {
+  return Array.from({ length: 7 }, (_, i) => (
+    <li className={styles.itemLoader} key={i}></li>
+  ));
 }

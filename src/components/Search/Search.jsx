@@ -19,7 +19,7 @@ export default function Search({ value, onSearch }) {
           <input
             type="text"
             className={styles.searchInput}
-            placeholder="Search for a place..."
+            placeholder="Search for a city, e.g New York"
             value={value}
             onChange={onSearch}
           />

@@ -15,7 +15,7 @@ export default function DailyForcast({ data, isLoading }) {
       icon: daily.weather_code?.[i],
     })) || [];
 
-  console.log(transformed);
+  // console.log(transformed);
 
   return (
     <section className={styles.container}>

@@ -74,7 +74,7 @@ export default function WeatherInfo({ data, isLoading, region }) {
         </article>
         <DailyForcast data={data} isLoading={isLoading} />
       </section>
-      <HourlyForecast />
+      <HourlyForecast data={data} isLoading={isLoading} />
     </div>
   );
 }

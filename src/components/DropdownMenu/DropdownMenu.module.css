@@ -1,6 +1,7 @@
 .dropdown {
   width: max-content;
   position: relative;
+  z-index: 10;
 }
 
 .dropdownBtn {
